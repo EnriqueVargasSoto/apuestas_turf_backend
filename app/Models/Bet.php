@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Bet extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
+    function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    function events()
+    {
+        return $this->belongsToMany(Event::class);
+    }
 }
