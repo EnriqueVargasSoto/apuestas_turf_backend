@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('bets', function (Blueprint $table) {
             $table->id();
+            $table->enum('result',['pendiente','perdida','ganada'])->default('pendiente');
+            $table->string('amount_total_bet');
+            $table->string('amount_total_result');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('bets');
     }
 };
