@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ProbabilityController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\JWTController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +33,12 @@ Route::apiResource('transactions', TransactionController::class)->parameters([
 Route::apiResource('users', UserController::class)->parameters([
     'users' => 'item'
 ])->names('users');
+
+
+Route::group(['middleware' => 'api'], function ($router) {
+    Route::post('/register', [JWTController::class, 'register']);
+    Route::post('/login', [JWTController::class, 'login']);
+    Route::post('/logout', [JWTController::class, 'logout']);
+    Route::post('/refresh', [JWTController::class, 'refresh']);
+    Route::post('/profile', [JWTController::class, 'profile']);
+});
