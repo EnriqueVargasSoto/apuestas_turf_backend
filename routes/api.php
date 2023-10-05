@@ -7,8 +7,10 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\JWTController;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 Route::apiResource('bets', BetController::class)->parameters([
     'bets' => 'item'
@@ -42,3 +44,21 @@ Route::group(['middleware' => 'api'], function ($router) {
     Route::post('/refresh', [JWTController::class, 'refresh']);
     Route::post('/profile', [JWTController::class, 'profile']);
 });
+
+
+Route::get('transaction-user/{id}', [TransactionController::class, 'transactionUser']);
+
+Route::get('clear-cache', function () {
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    // Puedes agregar más comandos aquí según sea necesario
+    return 'Caché limpiada correctamente';
+});
+
+Route::get('storage-link', function () {
+    Artisan::call('storage:link');
+    return 'ok';
+});
+
+Route::put('update-event/{id}', [EventController::class, 'update']);

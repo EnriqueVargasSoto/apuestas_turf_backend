@@ -46,4 +46,11 @@ class TransactionController extends Controller
             'data' => $item
         ]);
     }
+
+    function transactionUser($id){
+        $transactions = Transaction::where('user_id', $id)->get();
+        return response()->json([
+            'data' => $transactions
+        ]);
+    }
 }

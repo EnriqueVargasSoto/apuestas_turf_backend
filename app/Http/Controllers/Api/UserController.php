@@ -39,9 +39,11 @@ class UserController extends Controller
         ]);
     }
 
-    function destroy(User $item)
+    function destroy($id)
     {
-        $item->delete();
+        $item = User::find($id);//->delete();
+        $item->status = 'inactive';
+        $item->save();
         return response()->json([
             'data' => $item
         ]);

@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
+            $table->enum('type', ['futbol', 'carrera']);
             $table->string('name');
             $table->string('image');
-            $table->date('date');
+            $table->dateTime('date');
+            $table->enum('tag', ['Pendiente', 'Terminado', 'Anulado', 'Postergado']);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
