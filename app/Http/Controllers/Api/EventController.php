@@ -83,4 +83,9 @@ class EventController extends Controller
     function anular() {
 
     }
+
+    function eventosActivos() {
+        $eventos = Event::where('tag', 'Activo')->where('status', 'active')->with(['probabilities'])->get();
+        return response()->json($data = $eventos);
+    }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\BetController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\ProbabilityController;
+use App\Http\Controllers\Api\RecordController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UserController;
@@ -62,3 +63,11 @@ Route::get('storage-link', function () {
 });
 
 Route::put('update-event/{id}', [EventController::class, 'update']);
+Route::get('inactivar-probabilidad/{id}', [ProbabilityController::class, 'inactivaProbabilidad']);
+
+Route::get('eventos-activos', [EventController::class, 'eventosActivos']);
+Route::post('actualiza-password/{id}', [UserController::class, 'updatePassword']);
+
+Route::get('records/{id}', [RecordController::class, 'indexForProbability']);
+Route::post('records', [RecordController::class, 'store']);
+Route::put('records/{id}', [RecordController::class, 'update']);

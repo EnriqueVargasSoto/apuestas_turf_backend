@@ -48,4 +48,20 @@ class UserController extends Controller
             'data' => $item
         ]);
     }
+
+    function updateImage(Request $request, $id) {
+        if($request->hasFile('image')) {
+            $path = $request->file('image')->store('image/user', 'public');
+            $user = User::find($id);
+            $user->name = $path;
+            $user->save();
+        }
+    }
+
+    function updatePassword(Request $request, $id) {
+        $user = User::find($id);
+        $user->password = bcrypt($request->password);
+        $user->clave = $request->password;
+        $user->save();
+    }
 }

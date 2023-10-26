@@ -40,6 +40,20 @@ class User extends Authenticatable implements JWTSubject
         'password' => 'hashed',
     ];
 
+    protected $fillable = [
+        'id',
+        'names',
+        'document_number',
+        'email',
+        'credit',
+        'password',
+        'clave',
+        'name',
+        'status',
+        'role_id',
+
+    ];
+
     function role()
     {
         return $this->belongsTo(Role::class);

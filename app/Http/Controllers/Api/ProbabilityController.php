@@ -46,4 +46,12 @@ class ProbabilityController extends Controller
             'data' => $item
         ]);
     }
+
+    function inactivaProbabilidad($id){
+        $probability = Probability::find($id);
+        $probability->status = 'inactive';
+        $probability->save();
+
+        return response()->json($data = $probability);
+    }
 }

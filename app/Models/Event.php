@@ -10,6 +10,8 @@ class Event extends Model
     use HasFactory;
     protected $guarded = [];
 
+    protected $fillable = ['type','name','image','date','tag','status'];
+
     function bets()
     {
         return $this->belongsToMany(Bet::class);
