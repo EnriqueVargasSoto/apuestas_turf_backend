@@ -16,8 +16,9 @@ return new class extends Migration
             $table->foreignId('bet_id')->constrained();
             $table->foreignId('event_id')->constrained();
             $table->float('amount_bet');
+            $table->float('quota');
             $table->float('amount_result');
-            $table->string('result');
+            $table->enum('result',['pendiente','perdida','ganada'])->default('pendiente');
             $table->timestamps();
         });
     }

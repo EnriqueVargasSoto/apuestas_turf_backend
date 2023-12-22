@@ -10,7 +10,7 @@ class EventController extends Controller
 {
     function index()
     {
-        $items = Event::all();
+        $items = Event::with(['probabilities.records'])->get();
         return response()->json([
             'data' => $items
         ]);
@@ -85,7 +85,7 @@ class EventController extends Controller
     }
 
     function eventosActivos() {
-        $eventos = Event::where('tag', 'Activo')->where('status', 'active')->with(['probabilities'])->get();
+        $eventos = Event::where('tag', 'Activo')->where('status', 'active')->with(['probabilities'])->with(['probabilities.records'])->get();
         return response()->json($data = $eventos);
     }
 }

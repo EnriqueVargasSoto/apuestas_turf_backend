@@ -17,6 +17,12 @@ class Event extends Model
         return $this->belongsToMany(Bet::class);
     }
 
+    public function betEvents()
+    {
+        return $this->hasMany(BetEvent::class, 'event_id');
+    }
+
+
     function probabilities()
     {
         return $this->hasMany(Probability::class);

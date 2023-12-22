@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image');
             $table->dateTime('date');
-            $table->enum('tag', ['Pendiente', 'Terminado', 'Anulado', 'Postergado']);
+            $table->enum('tag', ['Pendiente', 'Terminado', 'Anulado', 'Postergado', 'Activo']);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

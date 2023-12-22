@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('probabilities', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->float('value');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('event_id')->constrained();

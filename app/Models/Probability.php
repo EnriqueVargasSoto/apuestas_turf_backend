@@ -14,4 +14,14 @@ class Probability extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    function records()
+    {
+        return $this->hasMany(Record::class);
+    }
+
+    public function betEvents()
+    {
+        return $this->hasMany(BetEvent::class, 'probability_id');
+    }
 }

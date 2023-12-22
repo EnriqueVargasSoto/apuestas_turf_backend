@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class ProbabilityController extends Controller
 {
-    function index()
+    function index(Request $request)
     {
-        $items = Probability::all();
+        $event_id = $request->event_id;
+        $items = Probability::where('event_id', $event_id)->where('status', 'active')->get();
         return response()->json([
             'data' => $items
         ]);

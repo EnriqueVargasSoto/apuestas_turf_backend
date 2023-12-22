@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             'credit' => '00.00',
             'password' => bcrypt(123456),
             'status' => 'active',
+            'clave' => '123456',
             'role_id' => 1
         ]);
 
@@ -46,6 +47,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'nadal@turf.com',
             'credit' => '00.00',
             'password' => bcrypt(123456),
+            'clave' => '123456',
             'status' => 'active',
             'role_id' => 2
         ]);

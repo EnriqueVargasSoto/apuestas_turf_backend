@@ -50,12 +50,14 @@ class UserController extends Controller
     }
 
     function updateImage(Request $request, $id) {
+        $user = User::find($id);
         if($request->hasFile('image')) {
             $path = $request->file('image')->store('image/user', 'public');
-            $user = User::find($id);
+
             $user->name = $path;
             $user->save();
         }
+        return response()->json(['data' => $user]);
     }
 
     function updatePassword(Request $request, $id) {

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BetController;
+use App\Http\Controllers\Api\BetEventController;
 use App\Http\Controllers\Api\EventController;
 use App\Http\Controllers\Api\ProbabilityController;
 use App\Http\Controllers\Api\RecordController;
@@ -66,8 +67,15 @@ Route::put('update-event/{id}', [EventController::class, 'update']);
 Route::get('inactivar-probabilidad/{id}', [ProbabilityController::class, 'inactivaProbabilidad']);
 
 Route::get('eventos-activos', [EventController::class, 'eventosActivos']);
+Route::put('actualiza-imagen', [UserController::class, 'updateImage']);
 Route::post('actualiza-password/{id}', [UserController::class, 'updatePassword']);
 
 Route::get('records/{id}', [RecordController::class, 'indexForProbability']);
 Route::post('records', [RecordController::class, 'store']);
 Route::put('records/{id}', [RecordController::class, 'update']);
+Route::delete('records/{id}', [RecordController::class, 'destroy']);
+
+Route::post('bet-event', [BetEventController::class, 'store']);
+
+Route::post('cancelar-evento', [BetController::class, 'probabilidadesGanadas']);
+Route::post('probabilidades-ganadoras', [BetController::class, 'probabilidadesGanadas']);

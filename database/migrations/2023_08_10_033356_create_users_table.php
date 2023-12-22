@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('names');
             $table->string('document_number')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');//->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->float('credit')->default(0);
             $table->string('password');
+            $table->string('clave');
             $table->string('name')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->foreignId('role_id')->constrained();

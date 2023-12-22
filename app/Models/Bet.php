@@ -15,8 +15,8 @@ class Bet extends Model
         return $this->belongsToMany(User::class);
     }
 
-    function events()
+    public function betEvents()
     {
-        return $this->belongsToMany(Event::class);
+        return $this->hasMany(BetEvent::class, 'bet_id');
     }
 }

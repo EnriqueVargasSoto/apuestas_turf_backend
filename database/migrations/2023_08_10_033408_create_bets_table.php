@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('bets', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->nullable();
+            $table->foreignId('user_id')->constrained();
             $table->enum('result',['pendiente','perdida','ganada'])->default('pendiente');
-            $table->string('amount_total_bet');
-            $table->string('amount_total_result');
+            $table->float('amount_total_bet');
+            $table->float('quota');
+            $table->float('amount_total_result');
             $table->timestamps();
         });
     }

@@ -14,4 +14,9 @@ class Record extends Model
         'probability_id',
         'record'
     ];
+
+    function probability()
+    {
+        return $this->belongsTo(Probability::class);
+    }
 }
